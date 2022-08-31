@@ -29,12 +29,19 @@
       70 => "seventy",
       80 => "eighty",
       90 => "ninety",
-      100 => "hundred",
-      1000 => "thousand"
     }
 
-    if (input <= 19) 
-      return numbers[input]
+    # 9 100,000,000
+    # for (i=length; i > 0; i--)
+    # if i == 6 = "million"  |
+    #   if i == 3 "thousand" |----stored in hash
+    #     if i == 0 "hundred"|
+    # input to_s [length-i] i++
+    # input to_s [length-2]
+    # input to_s [length-1000]
+
+    # if (input <= 19) 
+    #   return numbers[input]
 
     elsif (input > 19 && input < 100)
       return_string = ''
@@ -67,6 +74,8 @@
         end
       end
       return return_string
+
+
 
     elsif (input >= 1000 && input < 10000)
       return_string = ''
