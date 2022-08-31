@@ -33,50 +33,63 @@
       1000 => "thousand"
     }
 
-      1 0 0 1 2 3 5
-
-      1000000
-      1000
-      200
-      30
-      5 
-      one 
-      thousand
-      two 
-      hundred
-      twenty 
-      one 
-
     if (input <= 19) 
       return numbers[input]
-    
-    elsif (input >= 20)
+
+    elsif (input > 19 && input < 100)
+      return_string = ''
+      string = input.to_s
+      array = string.split('') #----> take first piece, add "0" now it's going to be "30" then send to numbers hash
+      tens_place = array[0].concat("0")
+      if (tens_place != "0")
+        return_string.concat(numbers[tens_place.to_i])
+      end
+      return_string.concat(" " + numbers[array[1].to_i])
+      return return_string
+
+    elsif (input >= 100 && input < 1000)
+      return_string = ''
+      string = input.to_s
+      array = string.split('', 2)
+      hundreds_place = array[0]
+      return_string.concat(numbers[hundreds_place.to_i] + " hundred")
+      tens_place = array[1].to_i
+      if (tens_place != 0)
+        if (tens_place <= 19)
+          return_string.concat(" " + numbers[tens_place])
+        elsif
+          tens_array = tens_place.to_s.split("")
+          tens_place_new = tens_array[0].concat("0")
+          return_string.concat(" " + numbers[tens_place_new.to_i])
+          if (tens_array[1] != 0)
+            return_string.concat(" " + numbers[tens_array[1].to_i])
+          end
+        end
+      end
+      return return_string
+
+    elsif (input >= 1000 && input < 10000)
+      return_string = ''
       string = input.to_s
       array = string.split('')
-      if (array.length < 3)
-        array.each do |number_element|
-          
-        return_string = return_string.concat(array.number_element)  
-        return return_string
+      thousand_place = array[0]
+      return_string.concat(numbers[thousand_place.to_i] + " thousand")
+      hundreds_place = array[1]
+      if (hundreds_place != "0")
+        return_string.concat(" " + numbers[hundreds_place.to_i] + " hundred")
+      end
+      tens_place = array[2].concat("0")
+      if (tens_place != "00")
+        return_string.concat(" " + numbers[tens_place.to_i])
+      end
+      ones_place = array[3]
+      if (ones_place != "0")
+        return_string.concat(" " + numbers[ones_place.to_i])
+      end
 
 
-
-    # elsif (input > 19 && input < 100)
-    #   string = input.to_s
-    #   array = string.split('') #----> take first piece, add "0" now it's going to be "30" then send to numbers hash
-    #   tens_place = array[0].concat("0")
-    #   return "#{numbers[tens_place.to_i]} #{numbers[array[1].to_i]}" 
-    # elsif (input >= 100 && input < 1000)
-    #   string = input.to_s
-    #   array = string.split('')
-    #   hundreds_place = array[0]
-    #   tens_place = array[1].concat("0")
-    #   return "#{numbers[array[0].to_i]} hundred #{numbers[tens_place.to_i]} #{numbers[array[2].to_i]}"
-
-      #321 ----> three hundred twenty one
-    
+      return return_string
     end
   end
 
-  def 
-  end
+  
